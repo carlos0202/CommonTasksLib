@@ -1,0 +1,6 @@
+c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTaskTests\bin\Debug\CommonTaskTests.exe.config
+c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTaskTests\bin\Debug\CommonTaskTests.exe
+c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTaskTests\bin\Debug\CommonTaskTests.pdb
+c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTaskTests\obj\Debug\CommonTaskTests.csprojResolveAssemblyReference.cache
+c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTaskTests\obj\Debug\CommonTaskTests.exe
+c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTaskTests\obj\Debug\CommonTaskTests.pdb
