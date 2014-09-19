@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTasksLib", "CommonTas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTaskTests", "CommonTaskTests\CommonTaskTests.csproj", "{4312B184-110B-492F-A64E-7E425EE0EDE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTests", "LibTests\LibTests.csproj", "{92439DDA-5111-4A45-9E71-249E221B79E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4312B184-110B-492F-A64E-7E425EE0EDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4312B184-110B-492F-A64E-7E425EE0EDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4312B184-110B-492F-A64E-7E425EE0EDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92439DDA-5111-4A45-9E71-249E221B79E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92439DDA-5111-4A45-9E71-249E221B79E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92439DDA-5111-4A45-9E71-249E221B79E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92439DDA-5111-4A45-9E71-249E221B79E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
