@@ -94,5 +94,23 @@ namespace CommonTasksLib.Structs
 
             return string.Format(provider, rewrittenFormat, values.ToArray());
         }
+
+        public static string Left(this string source, int length)
+        {
+            source = (source ?? string.Empty);
+            length = (length < 0) ? 0 : length;
+
+            return source.Substring(0, Math.Min(length, source.Length));
+        }
+
+        public static string Right(this string source, int length)
+        {
+            source = (source ?? string.Empty);
+            length = (length < 0) ? 0 : length;
+
+            return (source.Length >= length) ? 
+                source.Substring(source.Length - length, length) : source;
+        }
+
     }
 }

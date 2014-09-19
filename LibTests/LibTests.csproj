@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestClass.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,10 +58,6 @@
     <ProjectReference Include="..\CommonTasksLib\CommonTasksLib.csproj">
       <Project>{12ff777e-6d15-4bf5-b209-33c46a4195b1}</Project>
       <Name>CommonTasksLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CommonTaskTests\CommonTaskTests.csproj">
-      <Project>{4312b184-110b-492f-a64e-7e425ee0ede7}</Project>
-      <Name>CommonTaskTests</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
