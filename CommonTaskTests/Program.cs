@@ -18,7 +18,7 @@ namespace CommonTaskTests
             TestClass objb = new TestClass
             {
                 FirstProperty = "Second instance",
-                ReferenceProperty = DateTime.Now.AddDays(-1),
+                ReferenceProperty = DateTime.Now.AddDays(-1).AddSeconds(-100),
                 SelfReferencedProperty = obja
             };
             obja.SelfReferencedProperty = objb;

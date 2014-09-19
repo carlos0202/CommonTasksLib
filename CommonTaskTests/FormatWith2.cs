@@ -69,12 +69,17 @@ namespace CommonTaskTests
 
                 if ((methodGroup.Value == "()"))
                 {
-                    var method = propertyGroup.Value.Split('.')[1];
+                    bool isInnerObject = propertyGroup.Value.IndexOf('.') != -1;
+                    var method = !isInnerObject ? propertyGroup.Value : propertyGroup.Value.Split('.')[1];
                     Type t = typeof(T);
+                    var lastDotPosition = propertyGroup.Value.LastIndexOf('.');
+                    var objectMember = isInnerObject ?
+                        DataBinder.Eval(source, propertyGroup.Value.Substring(0, lastDotPosition)) :
+                        source;
                     Object s = t.InvokeMember(method,
                         BindingFlags.DeclaredOnly |
                         BindingFlags.Public | BindingFlags.NonPublic |
-                        BindingFlags.Instance | BindingFlags.InvokeMethod, null, source, null);
+                        BindingFlags.Instance | BindingFlags.InvokeMethod, null, objectMember, null);
                     values.Add(s);
                 }
                 else
