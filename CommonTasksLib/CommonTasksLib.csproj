@@ -40,12 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Collections\" />
-    <Folder Include="Data\" />
     <Folder Include="UnSorted\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
