@@ -36,5 +36,37 @@ namespace LibTests
 
             Assert.AreEqual(null, objb.FirstProperty, "Transfer operation failed.");
         }
+
+        [TestMethod]
+        public void ToString_Default()
+        {
+            TestClass obja = new TestClass
+            {
+                FirstProperty = "Hi",
+                ReferenceProperty = DateTime.Now
+            };
+
+            string formattedString = obja.ToString<TestClass>();
+            string expected = "Hi";
+            string result = formattedString.Split('\n')[0].Split(':')[1].TrimEnd().TrimStart();
+
+            Assert.AreEqual(expected, result, "ToString operation failed.");
+        }
+
+        [TestMethod]
+        public void ToString_CustomSeparator()
+        {
+            TestClass obja = new TestClass
+            {
+                FirstProperty = "Hi",
+                ReferenceProperty = DateTime.Now
+            };
+
+            string formattedString = obja.ToString<TestClass>("|");
+            int expected = 3;
+            int result = formattedString.Split('|').Length;
+
+            Assert.AreEqual(expected, result, "ToString operation failed.");
+        }
     }
 }

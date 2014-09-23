@@ -112,5 +112,32 @@ namespace CommonTasksLib.Structs
                 source.Substring(source.Length - length, length) : source;
         }
 
+        public static string CreateRandomPassword(int length)
+        {
+            string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890#_";
+            string randomPassword = "";
+            Random randomizer = new Random();
+
+            while (0 < length--)
+            {
+                randomPassword += validChars[randomizer.Next(validChars.Length)];
+            }
+
+            return randomPassword;
+        }
+
+        public static string CreateRandomPassword(int length, string validChars)
+        {
+            string randomPassword = "";
+            Random randomizer = new Random();
+
+            while (0 < length--)
+            {
+                randomPassword += validChars[randomizer.Next(validChars.Length)];
+            }
+
+            return randomPassword;
+        }
+
     }
 }

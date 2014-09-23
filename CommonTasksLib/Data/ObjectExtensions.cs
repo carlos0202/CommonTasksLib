@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using CommonTasksLib.Structs;
 
 namespace CommonTasksLib.Data
 {
@@ -54,7 +55,7 @@ namespace CommonTasksLib.Data
                     expressions.Add(
                         Expression.Assign( //expresión para la asignación de las propiedades de los objetos.
                             Expression.Property(targetVariable, targetProperty),
-                                Expression.Convert(
+                            Expression.Convert(
                                     Expression.Property(sourceVariable, property), targetProperty.PropertyType)));
                 }
             }
@@ -97,6 +98,23 @@ namespace CommonTasksLib.Data
             {
                 Transfer(source, targetObj);
             }
+        }
+
+        public static string ToString<T>(this T source, string delimiter = "\n")
+            where T: class
+        {
+            string result = "";
+            string format = "";
+            var type = source.GetType();
+
+            foreach (var property in type.GetProperties())
+            {
+                format += string.Format("{0}:{{{0}}}{1}", property.Name, delimiter);
+            }
+            format = format.TrimEnd(delimiter.ToArray<char>());
+            result = source.FormatWith(format);
+
+            return result;
         }
     }
 }
