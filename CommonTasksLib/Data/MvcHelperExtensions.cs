@@ -89,7 +89,17 @@ namespace CommonTasksLib.Data
                            });
         }
 
-        public static IEnumerable<SelectListItem> EnumToList<TEnum, TAttributeType>(this TEnum enumObj, bool useIntegerValue) where TEnum : struct
+        /// <summary>
+        /// Método extensión utilizado para generar una colección de objetos SelectListItem
+        /// utilizados para la construcción de dropdown lists.
+        /// </summary>
+        /// <typeparam name="TEnum">Tipo de datos del objeto Enumerado.</typeparam>
+        /// <typeparam name="TAttributeType">Tipo de instancia interna de una opción del enumerado.</typeparam>
+        /// <param name="enumObj">Instancia de objeto enumeración para invocar el método.</param>
+        /// <param name="useIntegerValue">Valor que especifica si se desea usar el valor int interno del enumerado.</param>
+        /// <returns>Colección de tipo SelectListItem con las opciones del enumerado.</returns>
+        public static IEnumerable<SelectListItem> EnumToSelectList<TEnum, TAttributeType>(this TEnum enumObj, bool useIntegerValue)
+            where TEnum : struct
         {
             Type type = typeof(TEnum);
 

@@ -100,6 +100,14 @@ namespace CommonTasksLib.Data
             }
         }
 
+        /// <summary>
+        /// Método extensión para crear una cadena que contiene los valores de todas las propiedades
+        /// públicas de una clase.
+        /// </summary>
+        /// <typeparam name="T">Tipo de datos de la clase en cuestión.</typeparam>
+        /// <param name="source">Objeto de la instancia.</param>
+        /// <param name="delimiter">Delimitador usado para separar las propiedades.</param>
+        /// <returns>Objeto String que contiene las propiedades separadas con el separador.</returns>
         public static string ToString<T>(this T source, string delimiter = "\n")
             where T: class
         {
@@ -115,6 +123,41 @@ namespace CommonTasksLib.Data
             result = source.FormatWith(format);
 
             return result;
+        }
+
+        /// <summary>
+        /// Método extensión utilizado para obtener un atributo custom definido a una
+        /// clase.
+        /// </summary>
+        /// <typeparam name="T">Tipo del atributo customizado.</typeparam>
+        /// <param name="source">Instancia de la clase que se quiere obtener el atributo.</param>
+        /// <returns>Una instancia del atributo definido para dicha clase, o NULL si no lo tiene definido.</returns>
+        public static T GetCustomAttribute<T>(this object source)
+            where T: class
+        {
+            var type = source.GetType();
+
+            return type.GetCustomAttribute(typeof(T), true) as T;
+        }
+
+        /// <summary>
+        /// Método extensión utilizado para convertir una instancia de un objeto a otra instancia del tipo
+        /// destino.
+        /// </summary>
+        /// <typeparam name="U">Tipo de datos del objeto destino</typeparam>
+        /// <param name="source">Instancia del objeto a convertir.</param>
+        /// <returns>Instancia del objeto convertida al tipo U especificado.</returns>
+        public static U ConvertTo<U>(this object source)
+        {
+            try
+            {
+                Type conversionType = Nullable.GetUnderlyingType(typeof(U)) ?? typeof(U);
+                return (U)Convert.ChangeType(source, conversionType);
+            }
+            catch
+            {
+                return default(U);
+            }
         }
     }
 }

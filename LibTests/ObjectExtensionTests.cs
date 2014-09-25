@@ -68,5 +68,20 @@ namespace LibTests
 
             Assert.AreEqual(expected, result, "ToString operation failed.");
         }
+
+        [TestMethod]
+        public void GetCustomAttribute_Default()
+        {
+            TestClass obja = new TestClass
+            {
+                FirstProperty = "Hi",
+                ReferenceProperty = DateTime.Now
+            };
+            string expected = "Expected";
+
+            var attribute = obja.GetCustomAttribute<TestAttribute>();
+
+            Assert.AreEqual(expected, attribute.TestData, "Attribute not found");
+        }
     }
 }

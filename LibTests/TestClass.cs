@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibTests
 {
+    [Test("Expected")]
     public class TestClass
     {
         public String FirstProperty { get; set; }

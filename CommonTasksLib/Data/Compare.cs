@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CommonTasksLib.Data
 {
+    /// <summary>
+    /// Clase customizada para realizar comparación entre instancias
+    /// de una misma clase.
+    /// </summary>
+    /// <typeparam name="T">Tipo de clase sobre la cual se realiza la comparación.</typeparam>
     public class Compare<T> : IEqualityComparer<T>
     {
         /// <summary>
