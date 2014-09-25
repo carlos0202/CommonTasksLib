@@ -1,5 +1,5 @@
-c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasksLib.dll
-c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasksLib.pdb
 c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.csprojResolveAssemblyReference.cache
-c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.dll
-c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.pdb
+C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.dll
+C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.pdb
+C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.dll
+C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.pdb
