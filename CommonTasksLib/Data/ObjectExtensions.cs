@@ -39,7 +39,7 @@ namespace CommonTasksLib.Data
             foreach (var property in sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 // verificar si la propiedad fuente admite lectura.
-                if (!property.CanRead) 
+                if (!property.CanRead)
                     continue;
 
                 // verificar si la propiedad no debe ser transferida.
@@ -82,7 +82,7 @@ namespace CommonTasksLib.Data
         /// <returns></returns>
         public static void Transfer<SourceType, TargetType>(this SourceType source, ref TargetType targetObj, string toSkip = null)
             where TargetType : class, new()
-             where SourceType: class
+            where SourceType : class
         {
             if (targetObj == null)
             {
@@ -109,7 +109,7 @@ namespace CommonTasksLib.Data
         /// <param name="delimiter">Delimitador usado para separar las propiedades.</param>
         /// <returns>Objeto String que contiene las propiedades separadas con el separador.</returns>
         public static string ToString<T>(this T source, string delimiter = "\n")
-            where T: class
+            where T : class
         {
             string result = "";
             string format = "";
@@ -126,6 +126,33 @@ namespace CommonTasksLib.Data
         }
 
         /// <summary>
+        /// Método extensión para obtener un objeto PropertyInfo de una instancia
+        /// especificada como parámetro.
+        /// </summary>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
+        /// <typeparam name="TValue">Valor de la propiedad que se desea obtener el PropertyInfo</typeparam>
+        /// <param name="selector">Función utiliada para la obtención de la propiedad.</param>
+        /// <returns></returns>
+        public static PropertyInfo GetProperty<T, TValue>(
+            this T source,
+            Expression<Func<T, TValue>> selector)
+            where T : class
+        {
+            Expression body = selector;
+            if (body is LambdaExpression)
+            {
+                body = ((LambdaExpression)body).Body;
+            }
+            switch (body.NodeType)
+            {
+                case ExpressionType.MemberAccess:
+                    return (PropertyInfo)((MemberExpression)body).Member;
+                default: //Selector equivocado para la obtención.
+                    throw new InvalidOperationException();
+            }
+        }
+
+        /// <summary>
         /// Método extensión utilizado para obtener un atributo custom definido a una
         /// clase.
         /// </summary>
@@ -133,11 +160,43 @@ namespace CommonTasksLib.Data
         /// <param name="source">Instancia de la clase que se quiere obtener el atributo.</param>
         /// <returns>Una instancia del atributo definido para dicha clase, o NULL si no lo tiene definido.</returns>
         public static T GetCustomAttribute<T>(this object source)
-            where T: class
+            where T : class
         {
             var type = source.GetType();
 
             return type.GetCustomAttribute(typeof(T), true) as T;
+        }
+
+        /// <summary>
+        /// Método extensión utilizado para obtener un atributo custom definido a una
+        /// clase.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T GetCustomAttribute<T, U>(this U source)
+            where T : class
+            where U : ICustomAttributeProvider
+        {
+            return source.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T;
+        }
+
+        /// <summary>
+        /// Método extensión utilizado para obtener un atributo custom definido a una
+        /// propiedad de una clase.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public static TAttribute GetCustomAttribute<T, TValue, TAttribute>(this T source, Expression<Func<T, TValue>> selector)
+            where T : class
+            where TAttribute : Attribute
+        {
+            var propertyInfo = source.GetProperty(selector);
+            return propertyInfo.GetCustomAttribute(typeof(TAttribute), true) as TAttribute;
         }
 
         /// <summary>
@@ -159,5 +218,7 @@ namespace CommonTasksLib.Data
                 return default(U);
             }
         }
+
+        
     }
 }

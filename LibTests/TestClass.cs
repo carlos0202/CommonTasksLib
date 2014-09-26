@@ -9,6 +9,7 @@ namespace LibTests
     [Test("Expected")]
     public class TestClass
     {
+        [Test("First Property")]
         public String FirstProperty { get; set; }
         public DateTime ReferenceProperty{ get; set; }
         
