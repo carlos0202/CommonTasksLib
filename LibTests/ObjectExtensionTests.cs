@@ -113,5 +113,37 @@ namespace LibTests
 
             Assert.AreEqual(expected, attribute.TestData, "Attribute not found");
         }
+
+        [TestMethod]
+        public void GetCustomAttribute_CustomProvider()
+        {
+            TestClass obja = new TestClass
+            {
+                FirstProperty = "Hi",
+                ReferenceProperty = DateTime.Now
+            };
+            string expected = "Expected";
+
+            var type = obja.GetType();
+            var actual = type.GetCustomAttribute<TestAttribute, Type>().TestData;
+
+            Assert.AreEqual(expected, actual, "Attribute not found");
+        }
+
+
+        [TestMethod]
+        public void ConvertTo_Unboxing()
+        {
+            TestClass obja = new TestClass
+            {
+                FirstProperty = "Hi",
+                ReferenceProperty = DateTime.Now
+            };
+            var expected = typeof(TestAttribute);
+            var attr = obja.GetType().GetCustomAttribute<Attribute, Type>();
+            var actual = attr.ConvertTo<TestAttribute>();
+
+            Assert.AreEqual(expected, actual.GetType(), "Change type not sucessfull");
+        }
     }
 }

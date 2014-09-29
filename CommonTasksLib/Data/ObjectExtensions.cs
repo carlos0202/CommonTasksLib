@@ -201,7 +201,7 @@ namespace CommonTasksLib.Data
 
         /// <summary>
         /// Método extensión utilizado para convertir una instancia de un objeto a otra instancia del tipo
-        /// destino.
+        /// destino. (Recordar interfaz IConvertible [para el objeto source]).
         /// </summary>
         /// <typeparam name="U">Tipo de datos del objeto destino</typeparam>
         /// <param name="source">Instancia del objeto a convertir.</param>
