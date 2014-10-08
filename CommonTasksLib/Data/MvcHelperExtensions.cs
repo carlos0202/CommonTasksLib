@@ -299,18 +299,37 @@ namespace CommonTasksLib.Data
             return MvcHtmlString.Create(builder.ToString());
         }
 
-        public static MvcHtmlString ActionLinkImage(this HtmlHelper htmlHelper, string imageClass, string actionName, string controllerName, object routeValues = null, IDictionary<string, object> htmlAttributes = null)
+        public static MvcHtmlString ActionLinkImage(this HtmlHelper htmlHelper, string imageClass, string actionName, string title = "", object routeValues = null, object htmlAttributes = null)
         {
             TagBuilder builder;
             UrlHelper urlHelper;
+            htmlAttributes = (htmlAttributes == null) ? new Dictionary<string, object>() : htmlAttributes;
+            var attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
             urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
             builder = new TagBuilder("a");
-            builder.InnerHtml = string.Format("<i class=\"glyphicon {0}\">", imageClass);
+            builder.InnerHtml = string.Format("<i class=\"glyphicon glyphicon-{0} \"></i>", imageClass, title);
+            builder.Attributes["href"] = urlHelper.Action(actionName, routeValues);
+            attributes.Add("title", title);
+            attributes.Add("data-toggle", "tooltip");
+            builder.MergeAttributes(new RouteValueDictionary(attributes));
+
+            return MvcHtmlString.Create(builder.ToString());
+        }
+
+        public static MvcHtmlString ActionLinkImage(this HtmlHelper htmlHelper, string imageClass, string actionName, string controllerName, string title = "", object routeValues = null, object htmlAttributes = null)
+        {
+            TagBuilder builder;
+            UrlHelper urlHelper;
+            htmlAttributes = (htmlAttributes == null) ? new Dictionary<string, object>() : htmlAttributes;
+            var attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
+            builder = new TagBuilder("a");
+            builder.InnerHtml = string.Format("<i class=\"glyphicon glyphicon-{0} \"></i>", imageClass, title);
             builder.Attributes["href"] = urlHelper.Action(actionName, controllerName, routeValues);
-            if (htmlAttributes != null)
-            {
-                builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
-            }
+            attributes.Add("title", title);
+            attributes.Add("data-toggle", "tooltip");
+
+            builder.MergeAttributes(new RouteValueDictionary(attributes));
 
             return MvcHtmlString.Create(builder.ToString());
         }

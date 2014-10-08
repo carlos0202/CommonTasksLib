@@ -55,6 +55,7 @@
     <Compile Include="StringExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ObjectExtensionTests.cs" />
+    <Compile Include="MvcHelperExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonTasksLib\CommonTasksLib.csproj">
