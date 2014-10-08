@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Routing;
 
 namespace CommonTasksLib.Data
 {
@@ -280,6 +281,38 @@ namespace CommonTasksLib.Data
                 cssClass = "";
             }
             attributes["class"] = cssClass + " " + Customclass;
+        }
+
+        public static MvcHtmlString NoEncodeActionLink(this HtmlHelper htmlHelper, string imageClass, string action, object htmlAttributes)
+        {
+            TagBuilder builder;
+            UrlHelper urlHelper;
+            urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
+            builder = new TagBuilder("a");
+            builder.InnerHtml = string.Format("<i class=\"glyphicon {0}\">", imageClass);
+            builder.Attributes["href"] = urlHelper.Action(action);
+            if (htmlAttributes != null)
+            {
+                builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+            }
+
+            return MvcHtmlString.Create(builder.ToString());
+        }
+
+        public static MvcHtmlString ActionLinkImage(this HtmlHelper htmlHelper, string imageClass, string actionName, string controllerName, object routeValues = null, IDictionary<string, object> htmlAttributes = null)
+        {
+            TagBuilder builder;
+            UrlHelper urlHelper;
+            urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
+            builder = new TagBuilder("a");
+            builder.InnerHtml = string.Format("<i class=\"glyphicon {0}\">", imageClass);
+            builder.Attributes["href"] = urlHelper.Action(actionName, controllerName, routeValues);
+            if (htmlAttributes != null)
+            {
+                builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+            }
+
+            return MvcHtmlString.Create(builder.ToString());
         }
 
     }
