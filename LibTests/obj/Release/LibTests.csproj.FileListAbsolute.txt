@@ -5,3 +5,10 @@ C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTest
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.csprojResolveAssemblyReference.cache
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.pdb
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\LibTests.dll
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\LibTests.pdb
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\CommonTasks.HelperLib.dll
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\CommonTasks.HelperLib.pdb
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.csprojResolveAssemblyReference.cache
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.dll
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.pdb
