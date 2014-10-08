@@ -164,7 +164,7 @@ namespace CommonTasksLib.Data
         {
             var type = source.GetType();
 
-            return type.GetCustomAttribute(typeof(T), true) as T;
+            return type.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T;
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace CommonTasksLib.Data
             where TAttribute : Attribute
         {
             var propertyInfo = source.GetProperty(selector);
-            return propertyInfo.GetCustomAttribute(typeof(TAttribute), true) as TAttribute;
+            return propertyInfo.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault() as TAttribute;
         }
 
         /// <summary>
