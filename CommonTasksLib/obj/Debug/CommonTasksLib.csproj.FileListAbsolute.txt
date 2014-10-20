@@ -1,4 +1,3 @@
-c:\users\cagonzalec\documents\visual studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.csprojResolveAssemblyReference.cache
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.pdb
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.dll

@@ -125,6 +125,49 @@ namespace CommonTasksLib.Data
         }
 
         /// <summary>
+        /// Método extensión utilizado para generar una colección de objetos SelectListItem
+        /// utilizados para la construcción de dropdown lists.
+        /// </summary>
+        /// <typeparam name="TEnum">Tipo de datos del objeto Enumerado.</typeparam>
+        /// <param name="enumObj">Instancia de objeto enumeración para invocar el método.</param>
+        /// <param name="useIntegerValue">Valor que especifica si se desea usar el valor int interno del enumerado.</param>
+        /// <returns>Colección de tipo SelectListItem con las opciones del enumerado.</returns>
+        public static IEnumerable<SelectListItem> EnumToSelectList<TEnum>(this TEnum enumObj, bool useIntegerValue)
+            where TEnum : struct
+        {
+            Type type = typeof(TEnum);
+
+            var fields = type.GetFields(BindingFlags.Static | BindingFlags.GetField | BindingFlags.Public);
+
+            var values = from field in fields
+                         select new SelectListItem
+                         {
+                             Value = (useIntegerValue) ? field.GetRawConstantValue().ToString() : field.Name,
+                             Text = field.Name.Replace('_', ' '),
+                             Selected =
+                                 (useIntegerValue)
+                                     ? Convert.ToInt32(enumObj) == Convert.ToInt32(field.GetRawConstantValue())
+                                     : enumObj.ToString().Contains(field.Name)
+                         };
+
+
+            return values;
+        }
+
+        /// <summary>
+        /// Metodo utilitario para convertir un objeto enumerado en una lista de tipo string
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Dictionary<int, string> EnumToDictionary<T>(this T obj)
+            where T : struct 
+        {
+            return Enum.GetValues(typeof(T))
+               .Cast<T>()
+               .ToDictionary(t => Convert.ToInt32(t), t => t.ToString().Replace('_', ' '));
+        }
+
+        /// <summary>
         /// Html LabelFor helper diseñado para añadir una clase custom
         /// utilizada para los mensajes de error de bootstrap
         /// </summary>
