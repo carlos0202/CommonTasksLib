@@ -160,7 +160,7 @@ namespace CommonTasksLib.Data
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static Dictionary<int, string> EnumToDictionary<T>(this T obj)
-            where T : struct 
+            where T : struct
         {
             return Enum.GetValues(typeof(T))
                .Cast<T>()
@@ -376,6 +376,77 @@ namespace CommonTasksLib.Data
 
             return MvcHtmlString.Create(builder.ToString());
         }
+        public delegate MvcHtmlString ErrorFormatter(object s);
+        public static MvcHtmlString CValidationSummary(this HtmlHelper html, bool excludeFieldErrors = false, string message = null, object htmlAttributes = null, ErrorFormatter Formatter = null)
+        {
+            var errors = new List<ModelError>();
+            var modelMetadata = html.ViewData.ModelMetadata;
+            var propertyNames = modelMetadata.Properties.Select(p => p.PropertyName).ToList();
+            var attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            if (excludeFieldErrors)
+            {
+                // Review: Is there a better way to share the form field name between this and ModelStateDictionary?
+                var formModelState = html.ViewData.ModelState
+                    .Where(m => !propertyNames.Contains(m.Key)).SelectMany(m => m.Value.Errors).ToList();
+                if (formModelState != null)
+                {
+                    errors = formModelState;
+                }
+            }
+            else
+            {
+                errors = html.ViewData.ModelState.SelectMany(c => c.Value.Errors).ToList();
+            }
 
+            if (!errors.Any())
+            {
+                return null;
+            }
+            else
+            {
+                if (Formatter == null)
+                {
+                    TagBuilder tagBuilder = new TagBuilder("div");
+                    tagBuilder.MergeAttributes(attributes);
+
+                    StringBuilder builder = new StringBuilder();
+                    if (message != null)
+                    {
+                        builder.Append("<span>");
+                        builder.Append(html.Encode(message));
+                        builder.AppendLine("</span>");
+                    }
+                    builder.AppendLine("<ul>");
+
+                    foreach (var error in errors)
+                    {
+                        builder.Append("<li>");
+                        builder.Append(html.Encode(error.ErrorMessage));
+                        builder.AppendLine("</li>");
+                    }
+
+                    builder.Append("</ul>");
+                    tagBuilder.InnerHtml = builder.ToString();
+
+                    return MvcHtmlString.Create(builder.ToString());
+                    //return tagBuilder.ToHtmlString(TagRenderMode.Normal);
+                }
+                else
+                {
+                    return Formatter(errors);
+                }
+
+            }
+
+        }
+        public static MvcHtmlString CValidationSummary(this HtmlHelper html, bool excludeFieldErrors, ErrorFormatter Formatter)
+        {
+            return CValidationSummary(html, excludeFieldErrors, null, null, Formatter);
+        }
+
+        public static MvcHtmlString CValidationSummary(this HtmlHelper html, ErrorFormatter Formatter)
+        {
+            return CValidationSummary(html, excludeFieldErrors: false, message: null, htmlAttributes: null, Formatter: Formatter);
+        }
     }
 }
