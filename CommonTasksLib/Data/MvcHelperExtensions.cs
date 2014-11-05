@@ -448,5 +448,24 @@ namespace CommonTasksLib.Data
         {
             return CValidationSummary(html, excludeFieldErrors: false, message: null, htmlAttributes: null, Formatter: Formatter);
         }
+
+        public static MvcHtmlString SummaryFormatter(object e)
+        {
+            var errors = e as IEnumerable<ModelError>;
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<div class=\"alert alert-dismissable alert-danger\">");
+            builder.Append("<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>");
+            builder.Append("<ul>");
+            foreach (var error in errors)
+            {
+                builder.Append("<li>");
+                builder.Append(error.ErrorMessage);
+                builder.AppendLine("</li>");
+            }
+            builder.Append("</ul>");
+            builder.Append("</div>");
+
+            return MvcHtmlString.Create(builder.ToString());
+        }
     }
 }
