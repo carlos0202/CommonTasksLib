@@ -471,4 +471,139 @@ namespace CommonTasksLib.Data
             return MvcHtmlString.Create(builder.ToString());
         }
     }
+
+    public class AuthActionFilter : AuthorizeAttribute
+    {
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            base.OnAuthorization(filterContext);
+            var route = filterContext.RouteData;
+            var aDesc = filterContext.ActionDescriptor;
+            var allowAnonymous = aDesc.GetCustomAttribute<AllowAnonymousAttribute>();
+
+            if (allowAnonymous != null) return;
+
+            var controller = route.GetRequiredString("controller");
+            var action = route.GetRequiredString("action");
+
+            if (HtmlLinksHelper._perms(controller, action))
+            {
+                return;
+            }
+            else
+            {
+                filterContext.Result = new RedirectToRouteResult(
+                 new RouteValueDictionary
+                 {
+                     { "controller", "Home" },
+                     { "action", "ErrorUnauthorized" }
+                 });
+            }
+        }
+    }
+
+    public static class HtmlLinksHelper
+    {
+        public delegate bool AuthChecker(params object[] prms);
+        public delegate bool PermissionsChecker(string controller, string action);
+        private static AuthChecker _del;
+        public static PermissionsChecker _perms;
+        public static AuthActionFilter Filter
+        {
+            get { return new AuthActionFilter(); }
+        }
+        public static void SetDelegate(AuthChecker del)
+        {
+            _del = del;
+        }
+
+        public static void SetDelegate(PermissionsChecker perms)
+        {
+            _perms = perms;
+        }
+
+        public static MvcHtmlString SActionLinkAuthorized(this HtmlHelper html, params object[] parameters)
+        {
+            bool authorized = _del(parameters);
+            var controller = parameters[2].ToString();
+            var action = parameters[1].ToString();
+            var linkText = parameters[0].ToString();
+            var routeValues = parameters.ElementAtOrDefault(3);
+            var htmlAttrs = parameters.ElementAtOrDefault(4);
+            var generateDisabled = (!authorized && parameters[parameters.Length - 1].GetType() == typeof(Boolean)) ? 
+                (bool)parameters[parameters.Length - 1] : false;
+
+            if (!generateDisabled && !authorized)
+            {
+                return MvcHtmlString.Empty;
+            }
+            else if (authorized)
+            {
+                return html.ActionLink(linkText, action, controller, routeValues, htmlAttrs);
+            }
+            else
+            {
+                var a = string.Format("<a href=\"javascript:void(0);\" >{0}</a>", linkText);
+
+                return MvcHtmlString.Create(a);
+            }
+        }
+
+        public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, null, new RouteValueDictionary(), new RouteValueDictionary(), showActionLinkAsDisabled);
+		}
+
+		public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, null, new RouteValueDictionary(routeValues), new RouteValueDictionary(), showActionLinkAsDisabled);
+		}
+
+		public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, controllerName, new RouteValueDictionary(), new RouteValueDictionary(), showActionLinkAsDisabled);
+		}
+
+		public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, null, routeValues, new RouteValueDictionary(), showActionLinkAsDisabled);
+		}
+
+		public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, null, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes), showActionLinkAsDisabled);
+		}
+
+		public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, null, routeValues, htmlAttributes, showActionLinkAsDisabled);
+		}
+
+		public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes, bool showActionLinkAsDisabled = false)
+		{
+			return htmlHelper.ActionLinkAuthorized(linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes), showActionLinkAsDisabled);
+		}
+
+        public static MvcHtmlString ActionLinkAuthorized(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, bool showActionLinkAsDisabled)
+        {
+            if (_perms(controllerName, actionName))
+            {
+                return htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
+            }
+            else
+            {
+                if (showActionLinkAsDisabled)
+                {
+                    TagBuilder tagBuilder = new TagBuilder("a");
+                    tagBuilder.MergeAttributes(htmlAttributes);
+                    tagBuilder.InnerHtml = linkText;
+                    return MvcHtmlString.Create(tagBuilder.ToString());
+                }
+                else
+                {
+                    return MvcHtmlString.Empty;
+                }
+            }
+        }
+    }
 }
