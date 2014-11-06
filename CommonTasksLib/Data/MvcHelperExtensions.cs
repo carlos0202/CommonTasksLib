@@ -385,7 +385,6 @@ namespace CommonTasksLib.Data
             var attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
             if (excludeFieldErrors)
             {
-                // Review: Is there a better way to share the form field name between this and ModelStateDictionary?
                 var formModelState = html.ViewData.ModelState
                     .Where(m => !propertyNames.Contains(m.Key)).SelectMany(m => m.Value.Errors).ToList();
                 if (formModelState != null)
@@ -406,9 +405,6 @@ namespace CommonTasksLib.Data
             {
                 if (Formatter == null)
                 {
-                    TagBuilder tagBuilder = new TagBuilder("div");
-                    tagBuilder.MergeAttributes(attributes);
-
                     StringBuilder builder = new StringBuilder();
                     if (message != null)
                     {
@@ -426,10 +422,8 @@ namespace CommonTasksLib.Data
                     }
 
                     builder.Append("</ul>");
-                    tagBuilder.InnerHtml = builder.ToString();
 
                     return MvcHtmlString.Create(builder.ToString());
-                    //return tagBuilder.ToHtmlString(TagRenderMode.Normal);
                 }
                 else
                 {
@@ -449,6 +443,15 @@ namespace CommonTasksLib.Data
             return CValidationSummary(html, excludeFieldErrors: false, message: null, htmlAttributes: null, Formatter: Formatter);
         }
 
+        public static string Encode(this string str)
+        {
+            return System.Net.WebUtility.HtmlEncode(str);
+        }
+
+        public static string Decode(this string str)
+        {
+            return System.Net.WebUtility.HtmlDecode(str);
+        }
         public static MvcHtmlString SummaryFormatter(object e)
         {
             var errors = e as IEnumerable<ModelError>;
@@ -459,7 +462,7 @@ namespace CommonTasksLib.Data
             foreach (var error in errors)
             {
                 builder.Append("<li>");
-                builder.Append(error.ErrorMessage);
+                builder.Append(error.ErrorMessage.Encode());
                 builder.AppendLine("</li>");
             }
             builder.Append("</ul>");

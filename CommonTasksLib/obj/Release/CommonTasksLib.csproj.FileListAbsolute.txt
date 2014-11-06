@@ -7,3 +7,4 @@ C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonT
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.pdb
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.pdb
+C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasksLib.csprojResolveAssemblyReference.cache
