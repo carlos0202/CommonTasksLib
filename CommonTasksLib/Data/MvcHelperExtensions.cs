@@ -476,7 +476,6 @@ namespace CommonTasksLib.Data
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            base.OnAuthorization(filterContext);
             var route = filterContext.RouteData;
             var aDesc = filterContext.ActionDescriptor;
             var allowAnonymous = aDesc.GetCustomAttribute<AllowAnonymousAttribute>();
@@ -486,11 +485,7 @@ namespace CommonTasksLib.Data
             var controller = route.GetRequiredString("controller");
             var action = route.GetRequiredString("action");
 
-            if (HtmlLinksHelper._perms(controller, action))
-            {
-                return;
-            }
-            else
+            if (!HtmlLinksHelper._perms(controller, action))
             {
                 filterContext.Result = new RedirectToRouteResult(
                  new RouteValueDictionary
@@ -498,6 +493,10 @@ namespace CommonTasksLib.Data
                      { "controller", "Home" },
                      { "action", "ErrorUnauthorized" }
                  });
+            }
+            else
+            {
+                return;
             }
         }
     }
@@ -524,7 +523,7 @@ namespace CommonTasksLib.Data
 
         public static MvcHtmlString SActionLinkAuthorized(this HtmlHelper html, params object[] parameters)
         {
-            bool authorized = _del(parameters);
+            bool authorized = _perms(parameters[2].ToString(), parameters[1].ToString());
             var controller = parameters[2].ToString();
             var action = parameters[1].ToString();
             var linkText = parameters[0].ToString();
