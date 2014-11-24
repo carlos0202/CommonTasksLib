@@ -38,13 +38,13 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\CollectionExtensions.cs" />
+    <Compile Include="Data\ADOExtensions\GenericDAO.cs" />
     <Compile Include="Data\Compare.cs" />
     <Compile Include="Data\MvcHelperExtensions.cs" />
     <Compile Include="Data\ObjectExtensions.cs" />

@@ -35,7 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,6 +59,7 @@
     <Compile Include="ObjectExtensionTests.cs" />
     <Compile Include="MvcHelperExtensionTests.cs" />
     <Compile Include="ThreadingTest.cs" />
+    <Compile Include="DataAccessTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonTasksLib\CommonTasksLib.csproj">
