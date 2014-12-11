@@ -352,22 +352,9 @@ namespace CommonTasksLib.Data.ADOExtensions
             if (isTransaction) { Command.Transaction = Transaction; }
             Command.CommandText = sqlCommand;
             ArrayList names = new ArrayList();
-            string[] prms = { };
+            string[] prms = parameters.Split(',');
             if (isProcedure)
             {
-                //prms = parameters.Split(',');
-                //switch (ContainerInstance)
-                //{
-                //    case InstanceType.Oracle:
-                //        {
-                //            prms = parameters.Split(',');
-                //        } break;
-                //    case InstanceType.SqlServer:
-                //    case InstanceType.MySql:
-                //        {
-                //            prms = parameters.Split(',').Select(p => string.Format("@{0}", p)).ToArray();
-                //        } break;
-                //}
                 names.AddRange(prms);
                 Command.CommandType = CommandType.StoredProcedure;
             }
@@ -422,28 +409,10 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// Método utilitario para obtener los nombres de los parámetros especificados
         /// en una sentencia SQL dada.
         /// </summary>
-        /// <param name="query">Sentencia SQL.</param>
-        /// <returns></returns>
-        public ArrayList GetParameterNames(string query)
-        {
-            Regex pattern = new Regex(@"(?<!@)@\w+");
-            ArrayList paramNames = new ArrayList();
-            foreach (Match match in pattern.Matches(query))
-            {
-                paramNames.Add(match.Value);
-            }
-
-            return paramNames;
-        }
-
-        /// <summary>
-        /// Método utilitario para obtener los nombres de los parámetros especificados
-        /// en una sentencia SQL dada.
-        /// </summary>
         /// <typeparam name="T">Tipo asociado al comando que ejecutará la sentencia.</typeparam>
         /// <param name="query">Sentencia SQL a ejecutar.</param>
         /// <returns>ArrayList con los nombres de los parametros.</returns>
-        public ArrayList getParameterNames(string query)
+        public ArrayList GetParameterNames(string query)
         {
             ArrayList paramNames = new ArrayList();
             switch (ContainerInstance)
@@ -466,21 +435,6 @@ namespace CommonTasksLib.Data.ADOExtensions
                         }
                     } break;
             }
-            //if (type.IndexOf("Oracle", 0, type.Length, StringComparison.OrdinalIgnoreCase) != -1) // oracle provider
-            //{
-            //    pattern = new Regex(":([A-Za-z0-9]+)(\\s*)");
-            //    foreach (Match match in pattern.Matches(query))
-            //    {
-            //        paramNames.Add(match.Value.Replace(':', ' ').Trim());
-            //    }
-            //}
-            //else // other providers
-            //{
-            //    foreach (Match match in pattern.Matches(query))
-            //    {
-            //        paramNames.Add(match.Value);
-            //    }
-            //}
 
             return paramNames;
         }
@@ -514,32 +468,14 @@ namespace CommonTasksLib.Data.ADOExtensions
         }
 
         public string FormatSpecific(string paramName) {
-            if (ContainerInstance != InstanceType.Oracle)
-            {
-                return "@" + paramName;
-            }
 
-            return paramName;
-        }
-
-        public void AddParamWithVal
-            (
-                string paramName,
-                object value,
-                ParameterDirection direction = ParameterDirection.Input
-            )
-        {
-            var param = Command.CreateParameter();
-            param.ParameterName = paramName;
-            param.Value = value;
-            param.Direction = direction;
-            Command.Parameters.Add(param);
+            return (ContainerInstance != InstanceType.Oracle) ? 
+                "@" + paramName : paramName;
         }
 
         public void Dispose()
         {
             Connection.Dispose();
-
         }
     }
 
