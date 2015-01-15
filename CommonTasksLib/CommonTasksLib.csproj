@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\CollectionExtensions.cs" />
+    <Compile Include="Data\ADOExtensions\ADOHelperExtensions.cs" />
     <Compile Include="Data\ADOExtensions\GenericDAO.cs" />
     <Compile Include="Data\Compare.cs" />
     <Compile Include="Data\MvcHelperExtensions.cs" />

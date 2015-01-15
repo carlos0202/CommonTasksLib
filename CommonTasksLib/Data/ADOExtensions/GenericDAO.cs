@@ -352,9 +352,10 @@ namespace CommonTasksLib.Data.ADOExtensions
             if (isTransaction) { Command.Transaction = Transaction; }
             Command.CommandText = sqlCommand;
             ArrayList names = new ArrayList();
-            string[] prms = parameters.Split(',');
+            
             if (isProcedure)
             {
+                string[] prms = parameters.Split(',');
                 names.AddRange(prms);
                 Command.CommandType = CommandType.StoredProcedure;
             }
