@@ -33,7 +33,10 @@ namespace CommonTasksLib.Data.ADOExtensions
                     }
                     else
                     {
-                        DataColumn.Add(new KeyValuePair<string, object>(row.GetName(i), row.GetValue(i)));
+                        if (ToInclude.Contains(row.GetName(i), StringComparer.InvariantCultureIgnoreCase) || ToInclude.Count == 0)
+                        {
+                            DataColumn.Add(new KeyValuePair<string, object>(row.GetName(i), row.GetValue(i)));
+                        }    
                     }
                 }
                 result.Add(tmpRow);
