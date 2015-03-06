@@ -413,7 +413,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <typeparam name="T">Tipo asociado al comando que ejecutará la sentencia.</typeparam>
         /// <param name="query">Sentencia SQL a ejecutar.</param>
         /// <returns>ArrayList con los nombres de los parametros.</returns>
-        public ArrayList GetParameterNames(string query)
+        public virtual ArrayList GetParameterNames(string query)
         {
             ArrayList paramNames = new ArrayList();
             switch (ContainerInstance)
@@ -454,7 +454,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// </param>
         /// <remarks>
         /// </remarks>
-        public void AddWithValue
+        public virtual void AddWithValue
             (
                 string paramName,
                 object value,
@@ -462,13 +462,13 @@ namespace CommonTasksLib.Data.ADOExtensions
             )
         {
             var param = Command.CreateParameter();
-            param.ParameterName = FormatSpecific(paramName);
+            param.ParameterName = FormatParameter(paramName);
             param.Value = value;
             param.Direction = direction;
             Command.Parameters.Add(param);
         }
 
-        public string FormatSpecific(string paramName) {
+        public virtual string FormatParameter(string paramName) {
 
             return (ContainerInstance != InstanceType.Oracle) ? 
                 "@" + paramName : paramName;
