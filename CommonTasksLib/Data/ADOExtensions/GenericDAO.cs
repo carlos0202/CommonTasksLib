@@ -241,6 +241,18 @@ namespace CommonTasksLib.Data.ADOExtensions
             return ds;
         }
 
+        public DataSet ExecuteCursor(String dsName = "DataTable")
+        {
+            Adapter = new TAdapter();
+            Adapter.TableMappings.Add("Table", dsName);
+            DataSet ds = new DataSet("DataTable");
+            Adapter.SelectCommand = Command;
+            Adapter.Fill(ds);
+
+            return ds;
+        }
+
+
         /// <summary>
         /// Ejecuta un procedimiento almacenado que devuelve un objeto DataSet, usando el objeto de conexión, el comando
         /// establecido como parámetro, y los valores suplidos.
@@ -345,7 +357,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <param name="isProcedure">Especifica si se va a ejecutar un procedimiento almacenado.</param>
         /// <param name="parameters">Nombres de los parametros para la consulta (separados por coma [,]).</param>
-        private void LoadCommandObj(String sqlCommand, Object[] values, Object[] paramDirs = null, bool isProcedure = false, string parameters = null)
+        protected void LoadCommandObj(String sqlCommand, Object[] values, Object[] paramDirs = null, bool isProcedure = false, string parameters = null)
         {
             Command = new TCommand();
             Command.Connection = Connection;
