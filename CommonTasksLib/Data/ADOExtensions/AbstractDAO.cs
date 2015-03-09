@@ -198,7 +198,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <param name="values">Valores actuales para los parámetros establecidos.</param>
         /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <returns>Un Objeto DbCommand con los parametros cargados, y su respectiva sentencia SQL.</returns>
-        public DbCommand FillCommand(string sqlCommand, Object[] values, Object[] paramDirs = null)
+        public virtual DbCommand FillCommand(string sqlCommand, Object[] values, Object[] paramDirs = null)
         {
             this.FillCommand(sqlCommand, values, paramDirs);
 
@@ -213,7 +213,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <param name="parameterNames">Nombres de los parametros para la consulta (separados por coma [,]).</param>
         /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <returns>Un Objeto DbCommand con los parametros cargados.</returns>
-        public DbCommand FillCommand(string procedureName, Object[] values, String parameterNames, Object[] paramDirs = null)
+        public virtual DbCommand FillCommand(string procedureName, Object[] values, String parameterNames, Object[] paramDirs = null)
         {
             this.FillCommand(procedureName, values, paramDirs, true, parameterNames);
 
