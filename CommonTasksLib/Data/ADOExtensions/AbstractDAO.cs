@@ -1,20 +1,20 @@
-﻿using CommonTasksLib.Data.ADOExtensions.Enums;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.Common;
+using System.Collections;
 using System.Text.RegularExpressions;
+using CommonTasksLib.Data.ADOExtensions.Enums;
 
 namespace CommonTasksLib.Data.ADOExtensions
 {
-    public class GenericDAO<TCommand, TConnection, TAdapter> : IDisposable
+    public class AbstractDAO<TCommand, TConnection, TAdapter, TReader> : IDisposable
         where TCommand : DbCommand, new()
         where TConnection : DbConnection, new()
         where TAdapter : DbDataAdapter, new()
+        where TReader : DbDataReader, new()
     {
         public TCommand Command { get; set; }
         public TConnection Connection { get; set; }
@@ -26,7 +26,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         private CommandType commandType;
         private bool isTransaction;
 
-        public GenericDAO(string ConnString, InstanceType ContainerInstance = InstanceType.SqlServer)
+        public AbstractDAO(string ConnString, InstanceType ContainerInstance = InstanceType.SqlServer)
         {
             this.ConnString = ConnString;
             this.ContainerInstance = ContainerInstance;
@@ -130,43 +130,18 @@ namespace CommonTasksLib.Data.ADOExtensions
             }
         }
 
+
+        ///
+        /// Convention over configuration Api methods
+        ///
+
         /// <summary>
         /// Ejecuta una sentencia SQL usando el objeto de conexión, el comando
         /// establecido como parámetro, y los valores suplidos.
         /// </summary>
-        /// <param name="sqlCommand">Comando parametrizado a ejecutar en la BD.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos.</param>
-        /// <param name="paramDirs">
-        /// Propiedades de dirección de los parametros para la ejecución de la consulta,
-        /// siguiendo la representación interna de la enumeracion ParameterDirection.
-        /// Input = 1,
-        /// Output = 2,
-        /// InputOutput = 3,
-        /// ReturnValue = 6 (The parameter represents a return value from an operation such
-        ///     as a stored procedure, built-in function, or user-defined function.)
-        /// 
-        /// </param>
         /// <returns>El número de filas afectadas por dicha consulta.</returns>
-        public int ExecuteNonQuery(string sqlCommand, Object[] values, Object[] paramDirs = null)
+        public int ExecuteNonQuery()
         {
-            this.LoadCommandObj(sqlCommand, values, paramDirs);
-
-            return Command.ExecuteNonQuery();
-        }
-
-        /// <summary>
-        /// Ejecuta un procedimiento almacenado usando el objeto de conexión, el comando
-        /// establecido como parámetro, y los valores suplidos.
-        /// </summary>
-        /// <param name="procedureName">Nombre del procedimiento.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos, en conjunción con los valores del procedimiento.</param>
-        /// <param name="parameterNames">Nombres de los parametros para la consulta (separados por coma [,]).</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
-        /// <returns>El número de filas afectadas por dicha consulta.</returns>
-        public int ExecuteNonQuery(string procedureName, Object[] values, String parameterNames, Object[] paramDirs = null)
-        {
-            this.LoadCommandObj(procedureName, values, paramDirs, true, parameterNames);
-
             return Command.ExecuteNonQuery();
         }
 
@@ -174,33 +149,10 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// Ejecuta una sentencia SQL que devuelve un valor único, usando el objeto de conexión, el comando
         /// establecido como parámetro, y los valores suplidos.
         /// </summary>
-        /// <param name="sqlCommand">Comando parametrizado a ejecutar en la BD.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos.</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <returns>Objeto con el primer valor de la primera columna del resultado de la consulta.</returns>
-        public Object ExecuteScalar(string sqlCommand, Object[] values, Object[] paramDirs = null)
+        public Object ExecuteScalar()
         {
             Object returnVal = null;
-            this.LoadCommandObj(sqlCommand, values, paramDirs);
-
-            returnVal = Command.ExecuteScalar();
-
-            return returnVal;
-        }
-
-        /// <summary>
-        /// Ejecuta un procedimiento almacenado que devuelve un valor único, usando el objeto de conexión,
-        /// el comando establecido como parámetro, y los valores suplidos.
-        /// </summary>
-        /// <param name="procedureName">Nombre del procedimiento.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos, en conjunción con los valores del procedimiento.</param>
-        /// <param name="parameterNames">Nombres de los parametros para la consulta (separados por coma [,]).</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
-        /// <returns>Objeto con el primer valor de la primera columna del resultado de la consulta.</returns>
-        public Object ExecuteScalar(string procedureName, Object[] values, String parameterNames, Object[] paramDirs = null)
-        {
-            Object returnVal = null;
-            this.LoadCommandObj(procedureName, values, paramDirs, true, parameterNames);
             returnVal = Command.ExecuteScalar();
 
             return returnVal;
@@ -210,14 +162,9 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// Ejecuta una sentencia SQL que devuelve un objeto DbDataReader, usando el objeto de conexión, el comando
         /// establecido como parámetro, y los valores suplidos.
         /// </summary>
-        /// <param name="sqlCommand">Comando parametrizado a ejecutar en la BD.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos.</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <returns>Objeto DbDataReader con el resultado de la consulta.</returns>
-        public DbDataReader ExecuteReader(string sqlCommand, object[] values, Object[] paramDirs = null)
+        public DbDataReader ExecuteReader()
         {
-            this.LoadCommandObj(sqlCommand, values, paramDirs);
-
             return Command.ExecuteReader();
         }
 
@@ -225,50 +172,12 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// Ejecuta una sentencia SQL que devuelve un objeto Dataset, usando el objeto de conexión, el comando
         /// establecido como parámetro, y los valores suplidos.
         /// </summary>
-        /// <param name="sqlCommand">Comando parametrizado a ejecutar en la BD.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos.</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <returns>Objeto DataSet con el resultado de la consulta.</returns>
-        public DataSet ExecuteQuery(string sqlCommand, object[] values, Object[] paramDirs = null)
+        public DataSet ExecuteQuery(String dsName = "DataTable")
         {
             DataSet ds = new DataSet("DataTable");
-            Adapter = new TAdapter();
-            Adapter.TableMappings.Add("Table", "DataTable");
-            this.LoadCommandObj(sqlCommand, values, paramDirs);
-
-            Adapter.SelectCommand = Command;
-            Adapter.Fill(ds);
-
-            return ds;
-        }
-
-        public DataSet ExecuteCursor(String dsName = "DataTable")
-        {
             Adapter = new TAdapter();
             Adapter.TableMappings.Add("Table", dsName);
-            DataSet ds = new DataSet("DataTable");
-            Adapter.SelectCommand = Command;
-            Adapter.Fill(ds);
-
-            return ds;
-        }
-
-
-        /// <summary>
-        /// Ejecuta un procedimiento almacenado que devuelve un objeto DataSet, usando el objeto de conexión, el comando
-        /// establecido como parámetro, y los valores suplidos.
-        /// </summary>
-        /// <param name="procedureName">Nombre del procedimiento.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos, en conjunción con los valores del procedimiento.</param>
-        /// <param name="parameterNames">Nombres de los parametros para la consulta (separados por coma [,]).</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
-        /// <returns>Objeto DataSet con el resultado de la consulta.</returns>
-        public DataSet ExecuteQuery(string procedureName, Object[] values, string parameterNames, Object[] paramDirs = null)
-        {
-            DataSet ds = new DataSet("DataTable");
-            Adapter = new TAdapter();
-            Adapter.TableMappings.Add("Table", "DataTable");
-            this.LoadCommandObj(procedureName, values, paramDirs, true, parameterNames);
 
             Adapter.SelectCommand = Command;
             Adapter.Fill(ds);
@@ -276,48 +185,11 @@ namespace CommonTasksLib.Data.ADOExtensions
             return ds;
         }
 
-        /// <summary>
-        /// Ejecuta una sentencia SQL que devuelve un objeto Dataset, usando el objeto de conexión, el comando
-        /// establecido como parámetro, y los valores suplidos estableciendo usando el nombre de tabla especificado.
-        /// </summary>
-        /// <param name="sqlCommand">Comando parametrizado a ejecutar en la BD.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos.</param>
-        /// <param name="dsName">Nombre de tabla para el DataSet.</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
-        /// <returns>Un Objeto DataSet con el resultado de la consulta.</returns>
-        public DataSet ExecuteNamedQuery(string sqlCommand, Object[] values, string dsName, Object[] paramDirs = null)
-        {
-            Adapter = new TAdapter();
-            Adapter.TableMappings.Add("Table", dsName);
-            Ds = new DataSet(dsName);
-            this.LoadCommandObj(sqlCommand, values, paramDirs);
-            Adapter.SelectCommand = Command;
-            Adapter.Fill(Ds, dsName);
+        ///
+        /// End of convention methods
+        ///
 
-            return Ds;
-        }
 
-        /// <summary>
-        /// Ejecuta un procedimiento almacenado que devuelve un objeto DataSet, usando el objeto de conexión, el comando
-        /// establecido como parámetro, y los valores suplidos.
-        /// </summary>
-        /// <param name="procedureName">Nombre del procedimiento.</param>
-        /// <param name="values">Valores actuales para los parámetros establecidos, en conjunción con los valores del procedimiento.</param>
-        /// <param name="dataSetName">Nombre de tabla para el DataSet.</param>
-        /// <param name="parameterNames">Nombres de los parametros para la consulta (separados por coma [,]).</param>
-        /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
-        /// <returns>Objeto DataSet con el resultado de la consulta.</returns>
-        public DataSet ExecuteNamedQuery(string procedureName, Object[] values, string dataSetName, string parameterNames, Object[] paramDirs = null)
-        {
-            Adapter = new TAdapter();
-            Adapter.TableMappings.Add("Table", dataSetName);
-            Ds = new DataSet(dataSetName);
-            this.LoadCommandObj(procedureName, values, paramDirs, true, parameterNames);
-            Adapter.SelectCommand = Command;
-            Adapter.Fill(Ds, dataSetName);
-
-            return Ds;
-        }
 
         /// <summary>
         /// Carga los parámetros de la consulta sin hacer ninguna ejecución contra la base de datos.
@@ -328,7 +200,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <returns>Un Objeto DbCommand con los parametros cargados, y su respectiva sentencia SQL.</returns>
         public DbCommand FillCommand(string sqlCommand, Object[] values, Object[] paramDirs = null)
         {
-            this.LoadCommandObj(sqlCommand, values, paramDirs);
+            this.FillCommand(sqlCommand, values, paramDirs);
 
             return Command;
         }
@@ -343,7 +215,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <returns>Un Objeto DbCommand con los parametros cargados.</returns>
         public DbCommand FillCommand(string procedureName, Object[] values, String parameterNames, Object[] paramDirs = null)
         {
-            this.LoadCommandObj(procedureName, values, paramDirs, true, parameterNames);
+            this.FillCommand(procedureName, values, paramDirs, true, parameterNames);
 
             return Command;
         }
@@ -358,14 +230,14 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <param name="paramDirs">Dirección de los parametros suplidos.</param>
         /// <param name="isProcedure">Especifica si se va a ejecutar un procedimiento almacenado.</param>
         /// <param name="parameters">Nombres de los parametros para la consulta (separados por coma [,]).</param>
-        protected void LoadCommandObj(String sqlCommand, Object[] values, Object[] paramDirs = null, bool isProcedure = false, string parameters = null)
+        public virtual void FillCommand(String sqlCommand, Object[] values, Object[] paramDirs = null, bool isProcedure = false, string parameters = null)
         {
             Command = new TCommand();
             Command.Connection = Connection;
             if (isTransaction) { Command.Transaction = Transaction; }
             Command.CommandText = sqlCommand;
             ArrayList names = new ArrayList();
-            
+
             if (isProcedure)
             {
                 string[] prms = parameters.Split(',');
@@ -481,9 +353,10 @@ namespace CommonTasksLib.Data.ADOExtensions
             Command.Parameters.Add(param);
         }
 
-        public virtual string FormatParameter(string paramName) {
+        public virtual string FormatParameter(string paramName)
+        {
 
-            return (ContainerInstance != InstanceType.Oracle) ? 
+            return (ContainerInstance != InstanceType.Oracle) ?
                 "@" + paramName : paramName;
         }
 
@@ -491,5 +364,6 @@ namespace CommonTasksLib.Data.ADOExtensions
         {
             Connection.Dispose();
         }
+
     }
 }
