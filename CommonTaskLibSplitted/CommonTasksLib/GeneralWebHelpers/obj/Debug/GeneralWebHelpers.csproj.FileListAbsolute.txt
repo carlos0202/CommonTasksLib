@@ -1,0 +1,5 @@
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\bin\Debug\GeneralWebHelpers.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\bin\Debug\GeneralWebHelpers.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\obj\Debug\GeneralWebHelpers.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\obj\Debug\GeneralWebHelpers.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\obj\Debug\GeneralWebHelpers.pdb

@@ -1,0 +1,4 @@
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\bin\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\bin\Release\ADOHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\obj\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\obj\Release\ADOHelpersLib.pdb
