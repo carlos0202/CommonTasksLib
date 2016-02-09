@@ -2,3 +2,4 @@ C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetM
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\bin\Release\AspNetMvcHelpersLib.pdb
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.dll
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.csprojResolveAssemblyReference.cache

@@ -2,3 +2,4 @@ C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\General
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\bin\Release\GeneralWebHelpers.pdb
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\obj\Release\GeneralWebHelpers.dll
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\obj\Release\GeneralWebHelpers.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\GeneralWebHelpers\obj\Release\GeneralWebHelpers.csprojResolveAssemblyReference.cache

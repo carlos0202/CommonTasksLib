@@ -6,3 +6,13 @@ D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\Li
 D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.dll
 D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.pdb
 C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\LibTests.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\LibTests.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\CommonTasks.HelperLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Release\ADOHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.pdb
