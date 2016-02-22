@@ -1,0 +1,15 @@
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.dll
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.pdb
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasksLib.csprojResolveAssemblyReference.cache
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.dll
+D:\Documentos\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasksLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\CommonTasksLib\bin\Release\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\CommonTasksLib\bin\Release\CommonTasks.HelperLib.pdb
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\CommonTasksLib\obj\Release\CommonTasksLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\CommonTasksLib\obj\Release\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\CommonTasksLib\obj\Release\CommonTasks.HelperLib.pdb

@@ -1,0 +1,5 @@
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\bin\Debug\AspNetMvcHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\bin\Debug\AspNetMvcHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Debug\AspNetMvcHelpersLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Debug\AspNetMvcHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Debug\AspNetMvcHelpersLib.pdb

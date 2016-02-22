@@ -1,0 +1,10 @@
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\bin\Release\AspNetMvcHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\bin\Release\AspNetMvcHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\AspNetMvcHelpersLib\bin\Release\AspNetMvcHelpersLib.dll
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\AspNetMvcHelpersLib\bin\Release\AspNetMvcHelpersLib.pdb
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.dll
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\AspNetMvcHelpersLib\obj\Release\AspNetMvcHelpersLib.pdb

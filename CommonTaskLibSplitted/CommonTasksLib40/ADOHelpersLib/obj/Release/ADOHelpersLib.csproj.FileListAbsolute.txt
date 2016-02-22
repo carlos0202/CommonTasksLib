@@ -1,0 +1,10 @@
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\bin\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\bin\Release\ADOHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\obj\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\obj\Release\ADOHelpersLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\ADOHelpersLib\obj\Release\ADOHelpersLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\ADOHelpersLib\bin\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\ADOHelpersLib\bin\Release\ADOHelpersLib.pdb
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\ADOHelpersLib\obj\Release\ADOHelpersLib.csprojResolveAssemblyReference.cache
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\ADOHelpersLib\obj\Release\ADOHelpersLib.dll
+C:\Users\cagonzalec\Accesos\Backup\Template\Projects\CommonTasksLib\CommonTaskLibSplitted\CommonTasksLib40\ADOHelpersLib\obj\Release\ADOHelpersLib.pdb

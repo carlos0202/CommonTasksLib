@@ -1,0 +1,4 @@
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.pdb
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.dll
+C:\Users\cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.pdb
