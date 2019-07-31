@@ -2,3 +2,23 @@ C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonT
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.pdb
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.Helpers.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.Mvc.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.WebPages.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.WebPages.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.Helpers.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.Mvc.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.WebPages.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Debug\System.Web.WebPages.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.csproj.CoreCompileInputs.cache
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.csproj.CopyComplete
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Debug\CommonTasksLib.csprojAssemblyReference.cache

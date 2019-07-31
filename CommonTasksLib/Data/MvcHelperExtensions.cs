@@ -182,8 +182,7 @@ namespace CommonTasksLib.Data
             Expression<Func<TModel, TValue>> expression,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "control-label");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "control-label");
 
             return html.LabelFor(expression, attributes);
         }
@@ -193,8 +192,7 @@ namespace CommonTasksLib.Data
             Expression<Func<TModel, TProperty>> expression,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.TextBoxFor(expression, attributes);
         }
@@ -204,8 +202,7 @@ namespace CommonTasksLib.Data
             Expression<Func<TModel, TProperty>> expression,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.TextAreaFor(expression, attributes);
         }
@@ -215,8 +212,7 @@ namespace CommonTasksLib.Data
             Expression<Func<TModel, TProperty>> expression,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.PasswordFor(expression, attributes);
         }
@@ -225,8 +221,7 @@ namespace CommonTasksLib.Data
             this HtmlHelper<TModel> html,
             Expression<Func<TModel, TProperty>> expression)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(null, out attributes, "help-block");
+            AddCustomClass(null, out IDictionary<string, object> attributes, "help-block");
 
             return html.ValidationMessageFor(expression, null, attributes);
         }
@@ -237,8 +232,7 @@ namespace CommonTasksLib.Data
             object value = null,
            object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.TextBox(name, value, attributes);
         }
@@ -248,8 +242,7 @@ namespace CommonTasksLib.Data
             string name,
            object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.TextArea(name, attributes);
         }
@@ -260,8 +253,7 @@ namespace CommonTasksLib.Data
             object value = null,
             IDictionary<string, object> htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.Password(name, value, attributes);
         }
@@ -281,10 +273,9 @@ namespace CommonTasksLib.Data
             string optionLabel = null,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
-            return html.DropDownListFor(expression, selectList, (optionLabel == null) ? string.Empty : optionLabel, attributes);
+            return html.DropDownListFor(expression, selectList, optionLabel ?? string.Empty, attributes);
         }
 
         public static MvcHtmlString CListBoxFor<TModel, TProperty>(
@@ -293,8 +284,7 @@ namespace CommonTasksLib.Data
             IEnumerable<SelectListItem> selectList,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
             return html.ListBoxFor(expression, selectList, attributes);
         }
@@ -306,20 +296,18 @@ namespace CommonTasksLib.Data
             string optionLabel = null,
             object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = null;
-            addCustomClass(htmlAttributes, out attributes, "form-control");
+            AddCustomClass(htmlAttributes, out IDictionary<string, object> attributes, "form-control");
 
-            return html.DropDownList(name, selectList, (optionLabel == null) ? string.Empty : optionLabel, attributes);
+            return html.DropDownList(name, selectList, optionLabel ?? string.Empty, attributes);
         }
 
-        private static void addCustomClass(
+        private static void AddCustomClass(
             object htmlAttributes,
             out IDictionary<string, object> attributes,
             string Customclass)
         {
             attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
-            object cssClass;
-            if (attributes.TryGetValue("class", out cssClass) == false)
+            if (attributes.TryGetValue("class", out object cssClass) == false)
             {
                 cssClass = "";
             }
@@ -331,8 +319,10 @@ namespace CommonTasksLib.Data
             TagBuilder builder;
             UrlHelper urlHelper;
             urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
-            builder = new TagBuilder("a");
-            builder.InnerHtml = string.Format("<i class=\"glyphicon {0}\">", imageClass);
+            builder = new TagBuilder("a")
+            {
+                InnerHtml = string.Format("<i class=\"glyphicon {0}\">", imageClass)
+            };
             builder.Attributes["href"] = urlHelper.Action(action);
             if (htmlAttributes != null)
             {
@@ -346,11 +336,13 @@ namespace CommonTasksLib.Data
         {
             TagBuilder builder;
             UrlHelper urlHelper;
-            htmlAttributes = (htmlAttributes == null) ? new Dictionary<string, object>() : htmlAttributes;
+            htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
             var attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
             urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
-            builder = new TagBuilder("a");
-            builder.InnerHtml = string.Format("<i class=\"glyphicon glyphicon-{0} \"></i>", imageClass, title);
+            builder = new TagBuilder("a")
+            {
+                InnerHtml = string.Format("<i class=\"glyphicon glyphicon-{0} \"></i>", imageClass, title)
+            };
             builder.Attributes["href"] = urlHelper.Action(actionName, routeValues);
             attributes.Add("title", title);
             attributes.Add("data-toggle", "tooltip");
@@ -363,11 +355,13 @@ namespace CommonTasksLib.Data
         {
             TagBuilder builder;
             UrlHelper urlHelper;
-            htmlAttributes = (htmlAttributes == null) ? new Dictionary<string, object>() : htmlAttributes;
+            htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
             var attributes = (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
             urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
-            builder = new TagBuilder("a");
-            builder.InnerHtml = string.Format("<i class=\"glyphicon glyphicon-{0} \"></i>", imageClass, title);
+            builder = new TagBuilder("a")
+            {
+                InnerHtml = string.Format("<i class=\"glyphicon glyphicon-{0} \"></i>", imageClass, title)
+            };
             builder.Attributes["href"] = urlHelper.Action(actionName, controllerName, routeValues);
             attributes.Add("title", title);
             attributes.Add("data-toggle", "tooltip");
@@ -505,7 +499,7 @@ namespace CommonTasksLib.Data
     {
         public delegate bool AuthChecker(params object[] prms);
         public delegate bool PermissionsChecker(string controller, string action);
-        private static AuthChecker _del;
+      private static AuthChecker _del;
         public static PermissionsChecker _perms;
         public static AuthActionFilter Filter
         {
@@ -689,8 +683,10 @@ namespace CommonTasksLib.Data
             {
                 if (showActionLinkAsDisabled)
                 {
-                    TagBuilder tagBuilder = new TagBuilder("span");
-                    tagBuilder.InnerHtml = linkText;
+                    TagBuilder tagBuilder = new TagBuilder("span")
+                    {
+                        InnerHtml = linkText
+                    };
                     return MvcHtmlString.Create(tagBuilder.ToString());
                 }
                 else

@@ -18,7 +18,7 @@ namespace CommonTasksLib.UnSorted
                 }
                 catch { }
 
-                if (callback != null) callback();
+                callback?.Invoke();
             });
         }
     }

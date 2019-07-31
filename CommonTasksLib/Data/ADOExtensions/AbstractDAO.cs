@@ -21,7 +21,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         public string ConnString { get; set; }
         public DataSet Ds { get; set; }
         public InstanceType ContainerInstance { get; set; }
-        private CommandType commandType;
+        private readonly CommandType commandType;
         private bool isTransaction;
 
         public AbstractDAO(string ConnString, InstanceType ContainerInstance = InstanceType.SqlServer)
@@ -150,7 +150,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <returns>Objeto con el primer valor de la primera columna del resultado de la consulta.</returns>
         public Object ExecuteScalar()
         {
-            Object returnVal = null;
+            Object returnVal;// = null;
             returnVal = Command.ExecuteScalar();
 
             return returnVal;
@@ -230,8 +230,10 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <param name="parameters">Nombres de los parametros para la consulta (separados por coma [,]).</param>
         public virtual void FillCommand(String sqlCommand, Object[] values, Object[] paramDirs = null, bool isProcedure = false, string parameters = null)
         {
-            Command = new TCommand();
-            Command.Connection = Connection;
+            Command = new TCommand
+            {
+                Connection = Connection
+            };
             if (isTransaction) { Command.Transaction = Transaction; }
             Command.CommandText = sqlCommand;
             ArrayList names = new ArrayList();
