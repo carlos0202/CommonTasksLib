@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web.UI;
 
 namespace CommonTasksLib.Structs
@@ -57,7 +54,7 @@ namespace CommonTasksLib.Structs
               RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
             List<object> values = new List<object>();
-            string rewrittenFormat = r.Replace(format, delegate(Match m)
+            string rewrittenFormat = r.Replace(format, delegate (Match m)
             {
                 Group startGroup = m.Groups["start"];
                 Group propertyGroup = m.Groups["property"];
@@ -95,7 +92,7 @@ namespace CommonTasksLib.Structs
               RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
             List<object> values = new List<object>();
-            string rewrittenFormat = r.Replace(format, delegate(Match m)
+            string rewrittenFormat = r.Replace(format, delegate (Match m)
             {
                 Group startGroup = m.Groups["start"];
                 Group propertyGroup = m.Groups["property"];
@@ -159,7 +156,7 @@ namespace CommonTasksLib.Structs
             source = (source ?? string.Empty);
             length = (length < 0) ? 0 : length;
 
-            return (source.Length >= length) ? 
+            return (source.Length >= length) ?
                 source.Substring(source.Length - length, length) : source;
         }
 

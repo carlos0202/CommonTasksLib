@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CommonTasksLib.UnSorted;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CommonTasksLib.UnSorted;
+using System;
 using System.Threading;
 
 namespace LibTests

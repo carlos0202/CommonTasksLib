@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CommonTasksLib.Data.ADOExtensions.Enums;
+using System;
+using System.Collections;
 using System.Data;
 using System.Data.Common;
-using System.Collections;
+using System.Linq;
 using System.Text.RegularExpressions;
-using CommonTasksLib.Data.ADOExtensions.Enums;
 
 namespace CommonTasksLib.Data.ADOExtensions
 {
@@ -311,7 +309,8 @@ namespace CommonTasksLib.Data.ADOExtensions
                         {
                             paramNames.Add(match.Value);
                         }
-                    } break;
+                    }
+                    break;
                 case InstanceType.Oracle:
                     {
                         Regex pattern = new Regex(":([A-Za-z0-9]+)(\\s*)");
@@ -319,7 +318,8 @@ namespace CommonTasksLib.Data.ADOExtensions
                         {
                             paramNames.Add(match.Value.Replace(':', ' ').Trim());
                         }
-                    } break;
+                    }
+                    break;
             }
 
             return paramNames;
