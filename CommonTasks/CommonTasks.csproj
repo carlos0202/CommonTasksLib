@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\MvcHelperExtensions.cs" />
+    <Compile Remove="Structs\StringExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Collections\" />
+    <Folder Include="Structs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
