@@ -1,12 +1,9 @@
 ﻿using CommonTasksLib.Data.ADOExtensions.Enums;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CommonTasksLib.Data.ADOExtensions
@@ -365,7 +362,7 @@ namespace CommonTasksLib.Data.ADOExtensions
             if (isTransaction) { Command.Transaction = Transaction; }
             Command.CommandText = sqlCommand;
             ArrayList names = new ArrayList();
-            
+
             if (isProcedure)
             {
                 string[] prms = parameters.Split(',');
@@ -439,7 +436,8 @@ namespace CommonTasksLib.Data.ADOExtensions
                         {
                             paramNames.Add(match.Value);
                         }
-                    } break;
+                    }
+                    break;
                 case InstanceType.Oracle:
                     {
                         Regex pattern = new Regex(":([A-Za-z0-9]+)(\\s*)");
@@ -447,7 +445,8 @@ namespace CommonTasksLib.Data.ADOExtensions
                         {
                             paramNames.Add(match.Value.Replace(':', ' ').Trim());
                         }
-                    } break;
+                    }
+                    break;
             }
 
             return paramNames;
@@ -481,9 +480,10 @@ namespace CommonTasksLib.Data.ADOExtensions
             Command.Parameters.Add(param);
         }
 
-        public virtual string FormatParameter(string paramName) {
+        public virtual string FormatParameter(string paramName)
+        {
 
-            return (ContainerInstance != InstanceType.Oracle) ? 
+            return (ContainerInstance != InstanceType.Oracle) ?
                 "@" + paramName : paramName;
         }
 

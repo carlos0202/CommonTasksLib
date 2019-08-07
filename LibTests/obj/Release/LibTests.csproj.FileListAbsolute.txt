@@ -12,3 +12,26 @@ C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTest
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.csprojResolveAssemblyReference.cache
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Release\LibTests.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Release\LibTests.csprojAssemblyReference.cache
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Release\LibTests.csproj.CoreCompileInputs.cache
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Release\LibTests.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Release\LibTests.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\LibTests.dll.config
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\LibTests.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\LibTests.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\CommonTasks.HelperLib.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\Oracle.ManagedDataAccess.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.Mvc.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.WebPages.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.WebPages.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.WebPages.Deployment.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.Mvc.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.WebPages.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.WebPages.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Release\System.Web.WebPages.Deployment.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Release\LibTests.csproj.CopyComplete

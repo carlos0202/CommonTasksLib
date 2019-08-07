@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommonTasksLib.Data
 {
@@ -16,12 +13,13 @@ namespace CommonTasksLib.Data
         /// <summary>
         /// Función de comparación para establecer la comparación.
         /// </summary>
-        Func<T, T, bool> compareFunction;
+        readonly Func<T, T, bool> compareFunction;
+
         /// <summary>
         /// Función de hash para comparación de los objetos en base
         /// a una clave hash.
         /// </summary>
-        Func<T, int> hashFunction;
+        readonly Func<T, int> hashFunction;
 
         /// <summary>
         /// Constructor para la clase de comparación que establece la

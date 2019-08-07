@@ -1,21 +1,20 @@
-﻿using System;
+﻿using CommonTasksLib.Collections;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.Common;
 using System.Dynamic;
-using CommonTasksLib.Collections;
+using System.Linq;
 
 namespace CommonTasksLib.Data.ADOExtensions
 {
     public static class ADOHelperExtensions
     {
-        public static List<ExpandoObject> ToExpandoArray<T>(this T source, string includedFields = null, string excludedFields = null) 
-            where T: DbDataReader
+        public static List<ExpandoObject> ToExpandoArray<T>(this T source, string includedFields = null, string excludedFields = null)
+            where T : DbDataReader
         {
             List<ExpandoObject> result = new List<ExpandoObject>();
             List<string> ToInclude = includedFields == null ?
-                new List<string>() : includedFields.Split(new string[]{","}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                new List<string>() : includedFields.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
             ToInclude.ForEach(i => i = i.Trim());
             List<string> ToExclude = excludedFields == null ?
                 new List<String>() : excludedFields.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -26,7 +25,7 @@ namespace CommonTasksLib.Data.ADOExtensions
                 var DataColumn = (ICollection<KeyValuePair<string, object>>)tmpRow;
                 for (int i = 0; i < row.FieldCount; i++)
                 {
-                    if (ToExclude.Contains(row.GetName(i), StringComparer.InvariantCultureIgnoreCase) && 
+                    if (ToExclude.Contains(row.GetName(i), StringComparer.InvariantCultureIgnoreCase) &&
                         !ToInclude.Contains(row.GetName(i), StringComparer.InvariantCultureIgnoreCase))
                     {
                         continue;
@@ -36,7 +35,7 @@ namespace CommonTasksLib.Data.ADOExtensions
                         if (ToInclude.Contains(row.GetName(i), StringComparer.InvariantCultureIgnoreCase) || ToInclude.Count == 0)
                         {
                             DataColumn.Add(new KeyValuePair<string, object>(row.GetName(i), row.GetValue(i)));
-                        }    
+                        }
                     }
                 }
                 result.Add(tmpRow);

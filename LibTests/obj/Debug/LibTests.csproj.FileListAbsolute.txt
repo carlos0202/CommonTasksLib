@@ -5,3 +5,26 @@ C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTest
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\obj\Debug\LibTests.pdb
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Debug\CommonTasks.HelperLib.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\LibTests\bin\Debug\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\LibTests.dll.config
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\LibTests.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\LibTests.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\CommonTasks.HelperLib.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.Mvc.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.WebPages.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.Mvc.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.WebPages.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Debug\LibTests.csprojAssemblyReference.cache
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Debug\LibTests.csproj.CoreCompileInputs.cache
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Debug\LibTests.csproj.CopyComplete
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Debug\LibTests.dll
+C:\_DESARROLLO\CommonTasksLib\LibTests\obj\Debug\LibTests.pdb

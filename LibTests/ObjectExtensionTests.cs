@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CommonTasksLib.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CommonTasksLib.Data;
+using System;
 
 namespace LibTests
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CommonTasksLib.Data.ADOExtensions;
+using CommonTasksLib.Data.ADOExtensions.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CommonTasksLib.Data.ADOExtensions;
 using Oracle.ManagedDataAccess.Client;
 using System.Data.SqlClient;
 
@@ -28,7 +28,7 @@ namespace LibTests
         [TestMethod]
         public void CheckSqlServerProvider()
         {
-            
+
             try
             {
                 GenericDAO<SqlCommand, SqlConnection, SqlDataAdapter> Dao = new GenericDAO<SqlCommand, SqlConnection, SqlDataAdapter>("", InstanceType.SqlServer);

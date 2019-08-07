@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CommonTasksLib.Structs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CommonTasksLib.Structs;
+using System;
 
 namespace LibTests
 {

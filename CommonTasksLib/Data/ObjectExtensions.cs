@@ -1,11 +1,9 @@
-﻿using System;
+﻿using CommonTasksLib.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using CommonTasksLib.Structs;
 
 namespace CommonTasksLib.Data
 {
@@ -31,10 +29,12 @@ namespace CommonTasksLib.Data
             var sourceVariable = Expression.Variable(sourceType, "castedSource");
             var targetVariable = Expression.Variable(targetType, "castedTarget");
 
-            var expressions = new List<Expression>();
-            //agregar variables y parámetros a las expresiones lambda a ejecutar
-            expressions.Add(Expression.Assign(sourceVariable, Expression.Convert(sourceParameter, sourceType)));
-            expressions.Add(Expression.Assign(targetVariable, Expression.Convert(targetParameter, targetType)));
+            var expressions = new List<Expression>
+            {
+                //agregar variables y parámetros a las expresiones lambda a ejecutar
+                Expression.Assign(sourceVariable, Expression.Convert(sourceParameter, sourceType)),
+                Expression.Assign(targetVariable, Expression.Convert(targetParameter, targetType))
+            };
 
             foreach (var property in sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -111,7 +111,7 @@ namespace CommonTasksLib.Data
         public static string ToString<T>(this T source, string delimiter = "\n")
             where T : class
         {
-            string result = "";
+            string result;// = "";
             string format = "";
             var type = source.GetType();
 
@@ -215,10 +215,10 @@ namespace CommonTasksLib.Data
             }
             catch
             {
-                return default(U);
+                return default;
             }
         }
 
-        
+
     }
 }

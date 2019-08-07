@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CommonTasksLib.Data.ADOExtensions.Enums;
+using System;
+using System.Collections;
 using System.Data;
 using System.Data.Common;
-using System.Collections;
+using System.Linq;
 using System.Text.RegularExpressions;
-using CommonTasksLib.Data.ADOExtensions.Enums;
 
 namespace CommonTasksLib.Data.ADOExtensions
 {
@@ -23,7 +21,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         public string ConnString { get; set; }
         public DataSet Ds { get; set; }
         public InstanceType ContainerInstance { get; set; }
-        private CommandType commandType;
+        private readonly CommandType commandType;
         private bool isTransaction;
 
         public AbstractDAO(string ConnString, InstanceType ContainerInstance = InstanceType.SqlServer)
@@ -152,7 +150,7 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <returns>Objeto con el primer valor de la primera columna del resultado de la consulta.</returns>
         public Object ExecuteScalar()
         {
-            Object returnVal = null;
+            Object returnVal;// = null;
             returnVal = Command.ExecuteScalar();
 
             return returnVal;
@@ -232,8 +230,10 @@ namespace CommonTasksLib.Data.ADOExtensions
         /// <param name="parameters">Nombres de los parametros para la consulta (separados por coma [,]).</param>
         public virtual void FillCommand(String sqlCommand, Object[] values, Object[] paramDirs = null, bool isProcedure = false, string parameters = null)
         {
-            Command = new TCommand();
-            Command.Connection = Connection;
+            Command = new TCommand
+            {
+                Connection = Connection
+            };
             if (isTransaction) { Command.Transaction = Transaction; }
             Command.CommandText = sqlCommand;
             ArrayList names = new ArrayList();
@@ -311,7 +311,8 @@ namespace CommonTasksLib.Data.ADOExtensions
                         {
                             paramNames.Add(match.Value);
                         }
-                    } break;
+                    }
+                    break;
                 case InstanceType.Oracle:
                     {
                         Regex pattern = new Regex(":([A-Za-z0-9]+)(\\s*)");
@@ -319,7 +320,8 @@ namespace CommonTasksLib.Data.ADOExtensions
                         {
                             paramNames.Add(match.Value.Replace(':', ' ').Trim());
                         }
-                    } break;
+                    }
+                    break;
             }
 
             return paramNames;

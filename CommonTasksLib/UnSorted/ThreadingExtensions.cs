@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace CommonTasksLib.UnSorted
@@ -21,7 +18,7 @@ namespace CommonTasksLib.UnSorted
                 }
                 catch { }
 
-                if (callback != null) callback();
+                callback?.Invoke();
             });
         }
     }

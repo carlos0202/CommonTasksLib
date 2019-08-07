@@ -8,3 +8,22 @@ C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonT
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.dll
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.pdb
 C:\Users\Cagonzalec\Documents\Visual Studio 2013\Projects\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasksLib.csprojResolveAssemblyReference.cache
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\CommonTasks.HelperLib.pdb
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.Helpers.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.Mvc.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.WebPages.Deployment.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.WebPages.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.WebPages.Razor.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.Helpers.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.Mvc.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.WebPages.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.WebPages.Deployment.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\bin\Release\System.Web.WebPages.Razor.xml
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasksLib.csproj.CoreCompileInputs.cache
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasksLib.csproj.CopyComplete
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.dll
+C:\_DESARROLLO\CommonTasksLib\CommonTasksLib\obj\Release\CommonTasks.HelperLib.pdb
