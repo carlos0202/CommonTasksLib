@@ -49,7 +49,7 @@ namespace CommonTasksLib.Data
 
                 // verificar si la propiedad fuente tiene valor null y se desea impedir la copia
                 // de valores null.
-                if (property.GetValue(source) == null && !copyNullSource)
+                if (!copyNullSource && property.GetValue(source) == null)
                     continue;
 
                 // verificar si la propiedad no debe ser transferida.
@@ -64,7 +64,7 @@ namespace CommonTasksLib.Data
                         && targetProperty.PropertyType.IsAssignableFrom(property.PropertyType))
                 {
                     // verificar si el valor de la propiedad destino es null y se desea impedir reemplazar null.
-                    if (targetProperty.GetValue(target) == null && !replaceNullDestination)
+                    if (!replaceNullDestination && targetProperty.GetValue(target) == null)
                         continue;
 
                     expressions.Add(
