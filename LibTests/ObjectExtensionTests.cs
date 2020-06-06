@@ -38,6 +38,25 @@ namespace LibTests
         }
 
         [TestMethod]
+        public void Transfer_USingSourceNullProps()
+        {
+            TestClass obja = new TestClass
+            {
+                FirstProperty = null,
+                ReferenceProperty = DateTime.Now
+            };
+            TestClass objb = new TestClass
+            {
+                FirstProperty = "Target",
+                ReferenceProperty = DateTime.Now.AddYears(-10)
+            };
+
+            obja.Transfer(ref objb, null, false, false);
+
+            Assert.AreEqual("Target", objb.FirstProperty, "Transfer operation failed.");
+        }
+
+        [TestMethod]
         public void ToString_Default()
         {
             TestClass obja = new TestClass

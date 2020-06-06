@@ -1,0 +1,8 @@
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\bin\Release\netcoreapp2.2\CommonTasks.deps.json
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\bin\Release\netcoreapp2.2\CommonTasks.dll
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\bin\Release\netcoreapp2.2\CommonTasks.pdb
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\obj\Release\netcoreapp2.2\CommonTasks.csprojAssemblyReference.cache
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\obj\Release\netcoreapp2.2\CommonTasks.AssemblyInfoInputs.cache
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\obj\Release\netcoreapp2.2\CommonTasks.AssemblyInfo.cs
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\obj\Release\netcoreapp2.2\CommonTasks.dll
+D:\Documents\GitHub\CommonTasksLib\CommonTasks\obj\Release\netcoreapp2.2\CommonTasks.pdb

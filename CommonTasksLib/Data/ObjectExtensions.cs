@@ -16,7 +16,12 @@ namespace CommonTasksLib.Data
         /// </summary>
         /// <param name="source">Instancia del objeto del cual se obtendrán los datos.</param>
         /// <param name="target">Instancia del objeto que recibirá los datos.</param>
-        static void Transfer(object source, object target, List<string> toSkip = null)
+        static void Transfer(
+            object source, 
+            object target, 
+            List<string> toSkip = null, 
+            bool copyNullSource = true,
+            bool replaceNullDestination = true)
         {
             var sourceType = source.GetType(); //tipo de objeto de instancia fuente
             var targetType = target.GetType(); //tipo de objeto de instancia destino
@@ -42,12 +47,22 @@ namespace CommonTasksLib.Data
                 if (!property.CanRead)
                     continue;
 
+                // verificar si la propiedad fuente tiene valor null y se desea impedir la copia
+                // de valores null.
+                if (property.GetValue(source) == null && !copyNullSource)
+                    continue;
+
                 // verificar si la propiedad no debe ser transferida.
                 if (toSkip != null)
                     if (toSkip.Contains(property.Name, StringComparer.OrdinalIgnoreCase))
                         continue;
 
                 var targetProperty = targetType.GetProperty(property.Name, BindingFlags.Public | BindingFlags.Instance);
+
+                // verificar si el valor de la propiedad destino es null y se desea impedir reemplazar null.
+                if (targetProperty.GetValue(target) == null && !replaceNullDestination)
+                    continue;
+
                 if (targetProperty != null
                         && targetProperty.CanWrite //se puede escribir en la propiedad de destino?
                         && targetProperty.PropertyType.IsAssignableFrom(property.PropertyType))
@@ -80,7 +95,12 @@ namespace CommonTasksLib.Data
         /// <param name="source">Instancia del objeto fuente de los datos.</param>
         /// <param name="targetObj">Instancia opcional del objeto recibidor de los datos</param>
         /// <returns></returns>
-        public static void Transfer<SourceType, TargetType>(this SourceType source, ref TargetType targetObj, string toSkip = null)
+        public static void Transfer<SourceType, TargetType>(
+            this SourceType source, 
+            ref TargetType targetObj, 
+            string toSkip = null,
+            bool copyNullSource = true,
+            bool replaceNullDestination = true)
             where TargetType : class, new()
             where SourceType : class
         {
@@ -92,11 +112,11 @@ namespace CommonTasksLib.Data
             {
                 List<string> skipList = toSkip.Split(',').Where(s => !String.IsNullOrEmpty(s))
                     .Select(s => s.Trim()).ToList();
-                Transfer(source, targetObj, skipList);
+                Transfer(source, targetObj, skipList, copyNullSource, replaceNullDestination);
             }
             else
             {
-                Transfer(source, targetObj);
+                Transfer(source, targetObj, null, copyNullSource, replaceNullDestination);
             }
         }
 
