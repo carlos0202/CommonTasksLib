@@ -59,14 +59,14 @@ namespace CommonTasksLib.Data
 
                 var targetProperty = targetType.GetProperty(property.Name, BindingFlags.Public | BindingFlags.Instance);
 
-                // verificar si el valor de la propiedad destino es null y se desea impedir reemplazar null.
-                if (targetProperty.GetValue(target) == null && !replaceNullDestination)
-                    continue;
-
                 if (targetProperty != null
                         && targetProperty.CanWrite //se puede escribir en la propiedad de destino?
                         && targetProperty.PropertyType.IsAssignableFrom(property.PropertyType))
                 {
+                    // verificar si el valor de la propiedad destino es null y se desea impedir reemplazar null.
+                    if (targetProperty.GetValue(target) == null && !replaceNullDestination)
+                        continue;
+
                     expressions.Add(
                         Expression.Assign( //expresión para la asignación de las propiedades de los objetos.
                             Expression.Property(targetVariable, targetProperty),
